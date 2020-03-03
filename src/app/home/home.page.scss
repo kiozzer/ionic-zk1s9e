@@ -1,0 +1,53 @@
+
+ion-content {
+    --overflow: hidden;
+}
+
+ion-slide
+{
+ padding-top: 40px;
+ display: block;
+ 
+}
+
+ion-slides
+{
+--bullet-background:grey;
+--bullet-background-active:#8890B2;
+}
+
+ion-footer
+{
+    position: fixed;
+    bottom: 30px;
+}
+
+.slide-img-padding
+{
+    padding: 40px;
+}
+
+img {
+   max-height: 5000px;
+}
+
+.slide-tittle
+{
+    font-size: 30px;
+    font-weight: lighter;
+    margin-bottom: 60px;
+    color: gray;
+}
+
+.btn-main
+{
+ height: 60px;
+}
+
+
+@media screen and (max-height:775px)
+{
+    img {
+        width: 80%;
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "tribuOrganica",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

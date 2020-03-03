@@ -1,0 +1,48 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+<ion-content>
+
+
+  <ion-slides [options]="slideOptions" pager="true" #slide >
+    <ion-slide *ngFor="let slide of slides">
+      <div class="slide-img-padding">
+        <img [src]="slide.img">
+      </div>
+      <div class="slide-tittle">
+        <h3 [innerHTML]="slide.tittle"></h3>
+      </div>
+
+    </ion-slide>
+
+  </ion-slides>
+
+
+  <ion-footer class="ion-no-border">
+    <ion-grid fixed >
+      <ion-row>
+       
+
+        <ion-col size="10" offset="1" >
+          <ion-button color="primary" 
+          expand="full" fill="clear" (click)="goLogin()"> ENTRAR</ion-button >
+        </ion-col>
+
+        <ion-col size="10" offset="1" >
+          <ion-button color="primary" 
+          expand="full" shape="round" mode="ios" class="btn-main" (click)="goSigIn()"> REGISTRATE</ion-button >
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+
+
+
+</ion-content>

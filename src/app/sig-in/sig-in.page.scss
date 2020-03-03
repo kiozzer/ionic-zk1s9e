@@ -1,0 +1,41 @@
+
+.btn-register
+{
+ height: 40px;
+ --border-radius: 5px;
+}
+
+.termYcon
+{
+   font-size: .9em;
+       .openTerminos
+       {
+        color: dodgerblue;
+       }
+    
+}
+
+.required
+{
+    color: red;
+}
+
+.notsame
+{
+    margin-top: -15px;
+    font-size: 75%;
+}
+
+ion-checkbox.ng-invalid
+{
+    border-bottom:3px solid var(--ion-color-danger) !important;
+}
+
+ion-checkbox
+{
+    margin: 5px 10px !important;
+}
+
+
+
+

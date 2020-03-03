@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="registerForm">
+
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size="12" class="center pbttom">
+          <ion-button color="primary" expand="block" mode="ios" class="btn-main"> Registrarme con facebook</ion-button>
+          <label>o con tu correo electrónico</label>
+        </ion-col>
+
+        <!--------------->
+        <ion-col size="12" size-sm="6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Ingresa tu correo</mat-label>
+            <input matInput formControlName="correo" [errorStateMatcher]="matcher" type="email"
+              placeholder="Ej. pat@example.com">
+            <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+            <mat-error *ngIf="registerForm.get('correo').hasError && !registerForm.get('correo').hasError('required')">
+              Ingrese un correo valido
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('correo').hasError('required')">
+              Campo <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </ion-col>
+
+
+
+        <ion-col size="12" size-sm="6">
+          <mat-form-field>
+            <mat-label>Ingresa una contraseña</mat-label>
+            <input matInput formControlName="pass" [type]="hide ? 'text' : 'password'" [errorStateMatcher]="matcher">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('pass').hasError('required')">
+              Campo <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('pass').hasError && !registerForm.get('pass').hasError('required')">
+              Contraseña no valida ( minimo 1 caracter, una mayuscula y un número)
+            </mat-error>
+          </mat-form-field>
+        </ion-col>
+
+        <ion-col size="12" size-sm="6">
+          <mat-form-field>
+            <mat-label>Repite tu contraseña</mat-label>
+            <input matInput formControlName="rpass" [type]="hide ? 'text' : 'password'" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="registerForm.get('rpass').hasError('required') ">
+              Campo <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-error class="notsame"
+            *ngIf="registerForm.hasError('notSame') && !registerForm.get('rpass').hasError('required')">
+            Las contraseñas no coinciden
+          </mat-error>
+
+
+        </ion-col>
+
+        <ion-col size="12" size-sm="6">
+          <mat-form-field>
+            <mat-label>¿Tienes un código?</mat-label>
+            <input matInput formControlName="codigo" [errorStateMatcher]="matcher" placeholder="Ingresa tu código">
+          </mat-form-field>
+        </ion-col>
+
+
+        <ion-col size="12" class="center">
+          <ion-label class="termYcon"> Al registrarte aceptas los <u class="openTerminos"
+              (click)="openTerminos(1);">Términos y Condiciones de uso </u> y <u class="openTerminos"
+              (click)="openTerminos(2);">Políticas de privacidad</u></ion-label>
+        </ion-col>
+
+
+        <!------- REVISAR REGLAS DE NEGOCIO-------->
+
+        <ion-col size="12" size-sm="6">
+
+          <ion-item lines="none">
+            <label  *ngIf=" registerForm.controls.terminos.valid" class="termYcon ">Acepto los Términos y condiciones y ploítica de privacidad</label>
+            <label  *ngIf=" !registerForm.controls.terminos.valid && (registerForm.controls.terminos.dirty || registerForm.controls.terminos.touched )" class="termYcon required">Acepto los Términos y condiciones y ploítica de privacidad</label>
+            <ion-checkbox mode="md" color="primary" checked="true" slot="start" formControlName="terminos"></ion-checkbox>
+          </ion-item>
+
+        </ion-col>
+
+
+
+        <ion-col size="12" class="center">
+          <ion-item lines="none">
+            <label class="termYcon">Acepto recibir comunicacion de esta aplicación</label>
+            <ion-checkbox mode="md" color="primary" checked="false" slot="start" formControlName="notificacion">
+            </ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-col size="10" offset="1">
+      <ion-button color="primary" expand="full" shape="round" mode="ios" class="btn-register" (click)="registro()">
+        Registrarse</ion-button>
+    </ion-col>
+
+  </form>
+
+</ion-content>
